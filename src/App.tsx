@@ -261,6 +261,7 @@ const SectionCharacters = () => {
     {
       name: "비렉스 파이론",
       engName: "Virex Pyron",
+      subtitle: "파이론 공작",
       year: "4학년",
       age: "24세",
       major: "정치/군사학 전공",
@@ -277,13 +278,14 @@ const SectionCharacters = () => {
     {
       name: "카엘리스 로잔트",
       engName: "Kaelis Rosant",
+      subtitle: "로잔트 소공작",
       year: "4학년",
       age: "23세",
       major: "마법학 전공",
       height: "184cm",
       mbti: "ENFP",
       desc: [
-        "남부 마탑주의 외동아들이자 9서클에 도달한 대마법사임.",
+        "9서클 대마법사인 남부 마탑주의 외동아들이자 6서클에 도달한 천재 마법사임.",
         "입학식 때 주인공에게 첫눈에 반해 열렬히 짝사랑했으나, 작년 겨울 황녀의 집요하고 치밀한 이간질에 완전히 속아 넘어감.",
         "현재는 주인공을 향한 지독한 증오와 배신감에 사로잡혀 차갑게 흑화한 상태임.",
         "본래는 애정을 갈구하고 질투가 심해, 상처받으면 가차 없이 물어뜯는 극단적이고 맹목적인 성향의 소유자임."
@@ -314,6 +316,7 @@ const SectionCharacters = () => {
       major: "원예학 전공",
       height: "163cm",
       mbti: "ESFP",
+      image: "https://gbe88.uk/thum/4.webp",
       desc: [
         "제국의 보물이자 모두에게 사랑받는 천사 같은 귀염상 황녀임.",
         "하지만 실체는 철저한 계산과 계략으로 타인을 파멸시키는 완벽주의 소시오패스임.",
