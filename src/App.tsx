@@ -203,11 +203,16 @@ const CharacterCard = ({ char, key }: { char: any; key?: number | string }) => {
 
   return (
     <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-md border border-rose-100 overflow-hidden flex flex-col sm:flex-row">
-      <div className="w-full sm:w-2/5 bg-gray-200 aspect-square sm:aspect-auto flex items-center justify-center relative">
-        <User className="w-16 h-16 text-gray-400" />
-        <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/60 to-transparent p-4">
+      <div className="w-full sm:w-2/5 bg-gray-200 aspect-square sm:aspect-auto flex items-center justify-center relative overflow-hidden">
+        {char.image ? (
+          <img src={char.image} alt={char.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+        ) : (
+          <User className="w-16 h-16 text-gray-400" />
+        )}
+        <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/70 via-black/30 to-transparent p-4 pt-8">
           <h3 className="text-2xl font-serif text-white">{char.name}</h3>
-          {char.subtitle && <p className="text-rose-200 text-sm">{char.subtitle}</p>}
+          {char.engName && <p className="text-rose-100 text-sm italic font-serif opacity-90 mb-1">{char.engName}</p>}
+          {char.subtitle && <p className="text-rose-200 text-xs font-medium">{char.subtitle}</p>}
         </div>
       </div>
       <div className="w-full sm:w-3/5 p-6 flex flex-col">
@@ -255,11 +260,13 @@ const SectionCharacters = () => {
   const characters = [
     {
       name: "비렉스 파이론",
+      engName: "Virex Pyron",
       year: "4학년",
       age: "24세",
       major: "정치/군사학 전공",
       height: "203cm",
       mbti: "INTJ",
+      image: "https://gbe88.uk/thum/1.webp",
       desc: [
         "북부 파이론 가문의 젊은 공작이자 소드 마스터 초입에 이른 쿼터 드래곤임.",
         "타고난 감각이 너무 예민한 탓에, 살아남기 위해 의도적으로 감각을 차단하고 세상 모든 일에 무관심한 척 서늘하게 살아감.",
@@ -269,6 +276,7 @@ const SectionCharacters = () => {
     },
     {
       name: "카엘리스 로잔트",
+      engName: "Kaelis Rosant",
       year: "4학년",
       age: "23세",
       major: "마법학 전공",
@@ -283,6 +291,7 @@ const SectionCharacters = () => {
     },
     {
       name: "필레온 폰 안토르",
+      engName: "Phileon von Anthor",
       subtitle: "황태자",
       year: "4학년",
       age: "25세",
@@ -298,6 +307,7 @@ const SectionCharacters = () => {
     },
     {
       name: "엘리라 폰 안토르",
+      engName: "Elyra von Anthor",
       subtitle: "황녀",
       year: "2학년",
       age: "23세",
