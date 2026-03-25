@@ -301,6 +301,7 @@ const SectionCharacters = () => {
       major: "정치행정학 전공",
       height: "187cm",
       mbti: "ENTJ",
+      image: "https://gbe88.uk/thum/3.webp",
       desc: [
         "제국의 황태자이자 카멜리아와 계약 중인 상급 정령사이며, 5서클 마법사이기도 한 다재다능한 인물임.",
         "여동생인 황녀 엘리라가 티 없이 순수하다고 굳게 믿고 있어 그녀를 맹목적으로 과보호함.",
