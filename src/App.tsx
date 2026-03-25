@@ -284,7 +284,7 @@ const SectionCharacters = () => {
       major: "마법학 전공",
       height: "184cm",
       mbti: "ENFP",
-      image: "https://gbe88.uk/thum/2.webp",
+      image: "https://gbe88.uk/thum/2.webp?v=update",
       desc: [
         "9서클 대마법사인 남부 마탑주의 외동아들이자 6서클에 도달한 천재 마법사임.",
         "입학식 때 주인공에게 첫눈에 반해 열렬히 짝사랑했으나, 작년 겨울 황녀의 집요하고 치밀한 이간질에 완전히 속아 넘어감.",
