@@ -39,6 +39,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navItems = [
     { name: 'Home', href: '#home' },
+    { name: 'Guide', href: '#guide' },
     { name: 'World', href: '#world' },
     { name: 'Characters', href: '#characters' },
     { name: 'Commands', href: '#commands' },
@@ -114,6 +115,135 @@ const SectionHome = () => (
         [🔮 이미지 모아보기 바로가기]
       </a>
     </motion.div>
+
+    <div id="guide" className="w-full bg-white/90 backdrop-blur-sm p-6 md:p-8 rounded-2xl shadow-sm border border-rose-100 mb-12 scroll-mt-24">
+      <h2 className="text-2xl md:text-3xl font-serif text-rose-800 mb-4 flex items-center gap-2">
+        🌹 경지 가이드
+      </h2>
+      <p className="text-gray-700 mb-8 leading-relaxed">
+        * 루민플로르 아카데미에서의 원활한 롤플레잉과 페르소나 설정을 위한 무력/마법 등급 안내임.<br/>
+        * 캐릭터의 설정에 맞게 참고 바람.
+      </p>
+
+      <div className="space-y-8">
+        {/* 검사 */}
+        <div>
+          <h3 className="text-xl font-serif text-rose-700 mb-3 border-b border-rose-100 pb-2">
+            ⚔️ 검사 (Swordsman)
+          </h3>
+          <p className="text-gray-700 mb-3">* 마나를 육체에 받아들여 신체를 강화하고 검에 담아내는 자들임.</p>
+          <ul className="space-y-2 text-gray-700">
+            <li>* <strong className="text-rose-900">견습 기사 / 일반 기사:</strong> 마나를 느끼고 신체를 강화하며, 검에 옅게 마나를 씌울 수 있는 기본적인 단계임.</li>
+            <li>* <strong className="text-rose-900">소드 엑스퍼트 (Sword Expert):</strong> 마나를 뚜렷한 기운(오라)으로 방출하여 검기를 날릴 수 있는 숙련자임. 기사단장이나 정예 기사들이 이 경지에 머묾.</li>
+            <li>* <strong className="text-rose-900">소드 마스터 (Sword Master):</strong> 오라를 물리적인 검의 형태(검강)로 응집시키는 초인적인 경지임. 제국 전체를 통틀어도 손에 꼽을 만큼 희귀하며, 일당백을 넘어선 절대적인 무력을 자랑함.</li>
+            <li>* <strong className="text-rose-900">그랜드 마스터 (Grand Master):</strong> 인간의 한계를 초월하여 공간을 베어내는 전설 속의 경지임.</li>
+          </ul>
+        </div>
+
+        {/* 마법사 */}
+        <div>
+          <h3 className="text-xl font-serif text-rose-700 mb-3 border-b border-rose-100 pb-2">
+            🔮 마법사 (Mage)
+          </h3>
+          <p className="text-gray-700 mb-3">
+            * 심장에 마나를 모으는 고리(서클)를 쌓아 올려 세계의 법칙을 비트는 자들임.<br/>
+            * 서클이 하나 늘어날 때마다 위력과 연산력이 기하급수적으로 증폭됨.
+          </p>
+          <ul className="space-y-2 text-gray-700">
+            <li>* <strong className="text-rose-900">1~2서클:</strong> 마나를 느끼고 불피우기, 물방울 만들기 등 일상적인 생활 마법을 구현하는 견습 단계임.</li>
+            <li>* <strong className="text-rose-900">3~4서클:</strong> 아카데미를 정식으로 졸업한 평균적인 마법사들의 한계선임. 실전 전투와 실무에 능숙하게 마법을 활용함.</li>
+            <li>* <strong className="text-rose-900">5서클 (상급 마법사):</strong> 재능 있는 자들만이 뼈를 깎는 노력 끝에 오를 수 있는 높은 벽임. 단독으로 전황을 뒤집을 수 있는 파괴력을 지님.</li>
+            <li>* <strong className="text-rose-900">6서클 (대마법사 반열):</strong> 역사에 이름을 남길 만한 천재들이 도달하는 경지임. '걸어 다니는 전략 무기'로 취급받으며 막대한 정치적 영향력을 행사함.</li>
+            <li>* <strong className="text-rose-900">7서클 (인간의 한계):</strong> 국가의 근간을 수호하는 진정한 대마법사임. 대규모 광역 마법과 공간 이동(텔레포트)을 자유롭게 구사함.</li>
+            <li>* <strong className="text-rose-900">8서클 (초월자):</strong> 지형을 바꾸고 기후를 조작하는 등, 자연재해에 맞먹는 힘을 행사하는 초인임.</li>
+            <li>* <strong className="text-rose-900">9서클 (반신):</strong> 마나 그 자체가 되어 영창 없이도 세계의 법칙을 비틀 수 있는 데미갓(Demigod)의 영역임.</li>
+            <li>* <strong className="text-rose-900">10서클 (신의 영역):</strong> 시공간을 다루며 창조와 소멸을 관장하는, 역사서에서나 등장하는 신화적 경지임.</li>
+          </ul>
+        </div>
+
+        {/* 정령사 */}
+        <div>
+          <h3 className="text-xl font-serif text-rose-700 mb-3 border-b border-rose-100 pb-2">
+            🧚 정령사 (Elementalist)
+          </h3>
+          <p className="text-gray-700 mb-3">
+            * 자연의 의지인 정령과 교감하고 계약하여 그들의 힘을 빌려 쓰는 자들임.<br/>
+            * 마법사와 달리 '친화력'이라는 선천적인 재능이 절대적으로 필요함.
+          </p>
+          <ul className="space-y-2 text-gray-700 mb-6">
+            <li>* <strong className="text-rose-900">하급 정령사:</strong> 미약한 자아를 가진 하급 정령과 계약함. 작은 불씨를 만들거나 산들바람을 부는 등 기초적인 원소 조종이 가능함.</li>
+            <li>* <strong className="text-rose-900">중급 정령사:</strong> 뚜렷한 자아와 형태를 갖춘 중급 정령과 계약함. 본격적인 전투가 가능하며, 정령과의 대화가 원활해짐.</li>
+            <li>* <strong className="text-rose-900">상급 정령사:</strong> 고위 지성을 가지고 인간의 형태(폴리모프)를 취할 수 있는 상급 정령과 계약한 극소수의 능력자임. 도시 하나를 날려버릴 수 있는 힘을 다룸.</li>
+            <li>* <strong className="text-rose-900">정령왕의 계약자:</strong> 각 원소를 다스리는 정령계의 군주와 계약한 신화적인 존재임.</li>
+          </ul>
+
+          <div className="bg-rose-50/50 rounded-xl p-4 md:p-6 border border-rose-100 overflow-x-auto">
+            <h4 className="font-serif text-rose-800 mb-4 flex items-center gap-2">
+              💡 원소별 정령 계급표 (참고용)
+            </h4>
+            <table className="w-full text-sm text-left whitespace-nowrap">
+              <thead className="text-rose-900 border-b border-rose-200">
+                <tr>
+                  <th className="py-2 px-4 font-semibold">속성</th>
+                  <th className="py-2 px-4 font-semibold">하급 정령</th>
+                  <th className="py-2 px-4 font-semibold">중급 정령</th>
+                  <th className="py-2 px-4 font-semibold">상급 정령</th>
+                  <th className="py-2 px-4 font-semibold">정령왕 (최상급)</th>
+                </tr>
+              </thead>
+              <tbody className="text-gray-700 divide-y divide-rose-100">
+                <tr>
+                  <td className="py-2 px-4 font-medium">🔥 불</td>
+                  <td className="py-2 px-4">카사</td>
+                  <td className="py-2 px-4">샐러맨더</td>
+                  <td className="py-2 px-4">이프리트</td>
+                  <td className="py-2 px-4">이프리트 (동명) / 카리엔</td>
+                </tr>
+                <tr>
+                  <td className="py-2 px-4 font-medium">💧 물</td>
+                  <td className="py-2 px-4">나이아드</td>
+                  <td className="py-2 px-4">운디네</td>
+                  <td className="py-2 px-4">실피드 (물)</td>
+                  <td className="py-2 px-4">엘퀴네스</td>
+                </tr>
+                <tr>
+                  <td className="py-2 px-4 font-medium">🍃 바람</td>
+                  <td className="py-2 px-4">실프</td>
+                  <td className="py-2 px-4">실피드</td>
+                  <td className="py-2 px-4">진 (Djinn)</td>
+                  <td className="py-2 px-4">미네르바 / 실라이론</td>
+                </tr>
+                <tr>
+                  <td className="py-2 px-4 font-medium">⛰️ 땅</td>
+                  <td className="py-2 px-4">픽시</td>
+                  <td className="py-2 px-4">노움</td>
+                  <td className="py-2 px-4">클레이</td>
+                  <td className="py-2 px-4">노아스 / 트로웰</td>
+                </tr>
+                <tr>
+                  <td className="py-2 px-4 font-medium">✨ 빛</td>
+                  <td className="py-2 px-4">위스프</td>
+                  <td className="py-2 px-4">루미엘</td>
+                  <td className="py-2 px-4">샤이닝</td>
+                  <td className="py-2 px-4">루미나스</td>
+                </tr>
+                <tr>
+                  <td className="py-2 px-4 font-medium">🌑 어둠</td>
+                  <td className="py-2 px-4">셰이드</td>
+                  <td className="py-2 px-4">다크</td>
+                  <td className="py-2 px-4">섀도우</td>
+                  <td className="py-2 px-4">다크니스</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <p className="mt-4 text-rose-800 font-medium text-sm text-center bg-rose-50 py-2 rounded-lg">
+            * 안토니아 황실은 대대로 꽃의 정령들과 계약하고 있음.
+          </p>
+        </div>
+      </div>
+    </div>
 
     <div className="w-full bg-white/80 backdrop-blur-sm p-6 md:p-8 rounded-2xl shadow-sm border border-rose-100 mb-12">
       <h2 className="text-2xl font-serif text-rose-800 mb-6 flex items-center gap-2">
