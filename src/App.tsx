@@ -110,7 +110,7 @@ const SectionHome = () => (
         악녀 사냥<br/>
         <span className="text-2xl md:text-4xl text-rose-800 font-light mt-2 block">｜황녀의 가면을 벗겨라</span>
       </h1>
-      <a href="#" className="inline-block bg-gradient-to-r from-rose-400 to-rose-500 text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all font-medium text-lg mt-4">
+      <a href="https://rbimg.vercel.app/" target="_blank" rel="noopener noreferrer" className="inline-block bg-gradient-to-r from-rose-400 to-rose-500 text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all font-medium text-lg mt-4">
         [🔮 이미지 모아보기 바로가기]
       </a>
     </motion.div>
