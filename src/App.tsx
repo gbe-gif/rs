@@ -909,44 +909,115 @@ const SectionCharacters = () => {
   );
 };
 
-const SectionCommands = () => {
-  const [openIdx, setOpenIdx] = useState<number | null>(0);
+const commandTranslations = {
+  ko: {
+    sectionTitle: "명령어 시스템",
+    purposeLabel: "목적:",
+    featureLabel: "특징:",
+    list: [
+      {
+        name: "/사건",
+        purpose: "서사가 루즈해졌을 때 판을 뒤흔드는 스캔들이나 치명적 위기(정치/사회적 딜레마)를 강제 발동함.",
+        feature: "로코풍 코미디가 아닌, 피카레스크적 암투와 마라맛 치정이 섞인 대형 사건을 유발함.",
+        example: "중앙 홀 전광판에 '특정 학우, 은밀한 노예 경매 참가설' 찌라시가 대량 살포됨. 홀의 공기가 순식간에 차갑게 얼어붙음."
+      },
+      {
+        name: "/불운",
+        purpose: "완벽주의 소시오패스인 엘리라에게 '킹받는' 카타르시스(천벌)를 사소하게 선사함.",
+        feature: "물리적 고통보다 이미지 타격이나 얕은 계략이 어이없게 역풍을 맞는 사이다 연출임.",
+        example: "엘리라가 우아하게 걸음을 옮기던 순간, 전날 설치해 둔 진흙 트랩이 오작동하여 엘리라 본인을 덮침. \"꺄악!\" 순백의 드레스가 순식간에 더러워짐."
+      },
+      {
+        name: "/아카데미",
+        purpose: "루민플로르 아카데미 학생들의 날것 그대로의 여론과 은밀한 소문을 확인함.",
+        feature: "신입생의 질문부터 운영자에 의해 삭제된 찌라시까지 교내 생동감을 더하며, 아무말 대잔치 닉네임을 사용함.",
+        code: `\`\`\`🌼\n[🗣️소문｜딸기맛마석｜제목: 야, 오늘 중앙홀에서 황녀 엎어진 거 봄?]\n👀 142 💬 6\n내용: 진짜 개웃김 ㅋㅋㅋ 혼자 우아하게 걷다가 자기 드레스 밟고 철푸덕함. \n👍 45  👎 2\n↳ 삭제된계정｜❗삭제되었음❗ 👍 12 👎 1\n↳↳ 딸기맛마석｜헐 방금 대댓글 뭐였음? 왜 썰림?\n\`\`\``
+      },
+      {
+        name: "/사교",
+        purpose: "아카데미 밖, 플로르베나 제국 귀족 사교계의 딥하고 스케일 큰 동향 및 가십을 파악함.",
+        feature: "고정 닉네임과 유동닉이 혼재하며, 철학적 토론부터 입에 담기 힘든 자극적인 사교계 찌라시까지 섞여 있음.",
+        code: `\`\`\`💎\n[🗣️가십｜ㅇㅇ(112.45)｜제목: 남부 로잔트 가문 소후작 요즘 폼 미친듯]\n👀 890 💬 15\n내용: 저번 가면무도회에서 핑크머리 봤는데 눈빛이 넹글 돌았던데? 무슨 일 있음?\n👍 120  👎 5\n↳ 추상화만사모음｜걔 원래 성깔 더럽기로 유명하잖아. 👍 45 👎 2\n↳↳ ㅇㅇ(45.12)｜ㄴㄴ 며칠 전부터 흑마법 손댄다는 찌라시 돌고 있음. 조심해라.\n\`\`\``
+      }
+    ]
+  },
+  en: {
+    sectionTitle: "Command System",
+    purposeLabel: "Purpose:",
+    featureLabel: "Feature:",
+    list: [
+      {
+        name: "/incident",
+        purpose: "Forcefully triggers a board-shattering scandal or fatal crisis (political/social dilemma) whenever the narrative turns sluggish.",
+        feature: "Instigates high-stakes incidents infused with picaresque conspiracies and spicy romantic melodrama, rather than lighthearted rom-com humor.",
+        example: "A scandal sheet declaring 'A certain student attended a secretive slave auction' is widely broadcast across the central hall's billboard. The hall's atmosphere freezes in an instant."
+      },
+      {
+        name: "/misfortune",
+        purpose: "Inflicts a petty yet wonderfully satisfying retribution (divine retribution) upon the perfectionist sociopath Elyra.",
+        feature: "Rather than physical injury, delivers an exhilarating catharsis where her public image takes a blow or her shallow scheme backfires absurdly.",
+        example: "Just as Elyra took an elegant step, a mud trap she planted the day before malfunctioned and splashed over Elyra herself. \"Eek!\" Her pristine white dress was instantly ruined."
+      },
+      {
+        name: "/academy",
+        purpose: "Checks the raw student discourse and secretive campus gossip circulating through Luminflor Academy.",
+        feature: "Enhances lively campus atmosphere ranging from freshmen queries to moderator-deleted tabloid posts, featuring hilarious unfiltered usernames.",
+        code: `\`\`\`🌼\n[🗣️Rumor | StrawberryMagicStone | Title: Hey, anyone see the Princess faceplant in the central hall today?]\n👀 142 💬 6\nBody: LMAOO so hilarious she was walking all gracefully then tripped over her own hem and ate dirt.\n👍 45  👎 2\n↳ DeletedAccount | ❗Post Deleted by Mod❗ 👍 12 👎 1\n↳↳ StrawberryMagicStone | Bro what was that reply? Why did it get nuked?\n\`\`\``
+      },
+      {
+        name: "/society",
+        purpose: "Gathers deep, large-scale rumors, socialite gossip, and political movements across the Florebena Empire beyond the academy.",
+        feature: "A wild mix of verified aristocrats and anonymous posters discussing everything from philosophical debates to scandalous high-society rumors.",
+        code: `\`\`\`💎\n[🗣️Gossip | Anon(112.45) | Title: The young Marquis Rosant is acting unhinged lately]\n👀 890 💬 15\nBody: Saw that pink-haired guy at the last masquerade and his eyes were totally twisted. What happened?\n👍 120  👎 5\n↳ ArtCollector | Everyone knows he has a nasty temper. 👍 45 👎 2\n↳↳ Anon(45.12) | Nah rumor has it he started dabbling in dark magic a few days ago. Watch your back.\n\`\`\``
+      }
+    ]
+  },
+  ja: {
+    sectionTitle: "コマンドシステム",
+    purposeLabel: "目的:",
+    featureLabel: "特徴:",
+    list: [
+      {
+        name: "/事件",
+        purpose: "物語が停滞した際、盤上を揺るがすスキャンダルや致命的な危機（政治的・社会的ジレンマ）を強制発動する。",
+        feature: "ロマコメ風のコメディではなく、ピカレスク的な暗闘と刺激的な愛憎劇が絡み合う大事件を引き起こす。",
+        example: "中央ホールの電光掲示板に「特定生徒、秘密の奴隷競売参加疑惑」のタブロイドが大量に拡散される。ホールの空気は一瞬にして凍りつく。"
+      },
+      {
+        name: "/不運",
+        purpose: "完璧主義のソシオパスであるエリラに、ささやかで痛快な天罰（スカッとするカタルシス）を与える。",
+        feature: "肉体的な苦痛よりもイメージ失墜や浅はかな策略があっけなく裏目に出る、爽快なざまぁ演出。",
+        example: "エリラが優雅に歩みを進めた瞬間、前日仕掛けた泥トラップが誤作動してエリラ本人を直撃する。「きゃあっ！」純白のドレスが一瞬で泥まみれになる。"
+      },
+      {
+        name: "/アカデミー",
+        purpose: "ルミンフロール・アカデミーの生徒たちの生々しい世論や密かな噂話を確認する。",
+        feature: "新入生の質問から管理者によって削除されたゴシップまで校内の活気を演出し、自由奔放なハンドルネームを使用する。",
+        code: `\`\`\`🌼\n[🗣️噂｜イチゴ味の魔石｜件名: おい、今日中央ホールで皇女がすっ転んだの見たやついる？]\n👀 142 💬 6\n本文: ガチで草生えたｗｗ 一人で優雅に歩いてて自分のドレス踏んでベチャッてこけたぞ。\n👍 45  👎 2\n↳ 削除されたアカウント｜❗削除されました❗ 👍 12 👎 1\n↳↳ イチゴ味の魔石｜え、今の返信なんだったの？ なんで消された？\n\`\`\``
+      },
+      {
+        name: "/社交",
+        purpose: "アカデミー外、フローレベナ帝国貴族社交界のディープでスケールの大きな動向やゴシップを把握する。",
+        feature: "固定HNと匿名HNが混在し、高尚な哲学的議論から口にするのも憚られる過激な社交界タブロイドまでが混ざり合う。",
+        code: `\`\`\`💎\n[🗣️ゴシップ｜名無し(112.45)｜件名: 南部ロザント家の小侯爵、最近ヤバすぎないか]\n👀 890 💬 15\n本文: こないだの仮面舞踏会でピンク髪見かけたけど目が完全にイッてたぞ。何があった？\n👍 120  👎 5\n↳ 抽象画コレクター｜あいつ元から気性荒いので有名じゃん。 👍 45 👎 2\n↳↳ 名無し(45.12)｜いや数日前から黒魔法に手を出してるって噂出てる。気をつけろよ。\n\`\`\``
+      }
+    ]
+  }
+};
 
-  const commands = [
-    {
-      name: "!사건",
-      purpose: "서사가 루즈해졌을 때 판을 뒤흔드는 스캔들이나 치명적 위기(정치/사회적 딜레마)를 강제 발동함.",
-      feature: "로코풍 코미디가 아닌, 피카레스크적 암투와 마라맛 치정이 섞인 대형 사건을 유발함.",
-      example: "중앙 홀 전광판에 '특정 학우, 은밀한 노예 경매 참가설' 찌라시가 대량 살포됨. 홀의 공기가 순식간에 차갑게 얼어붙음."
-    },
-    {
-      name: "!불운",
-      purpose: "완벽주의 소시오패스인 엘리라에게 '킹받는' 카타르시스(천벌)를 사소하게 선사함.",
-      feature: "물리적 고통보다 이미지 타격이나 얕은 계략이 어이없게 역풍을 맞는 사이다 연출임.",
-      example: "엘리라가 우아하게 걸음을 옮기던 순간, 전날 설치해 둔 진흙 트랩이 오작동하여 엘리라 본인을 덮침. \"꺄악!\" 순백의 드레스가 순식간에 더러워짐."
-    },
-    {
-      name: "!아카데미",
-      purpose: "루민플로르 아카데미 학생들의 날것 그대로의 여론과 은밀한 소문을 확인함.",
-      feature: "신입생의 질문부터 운영자에 의해 삭제된 찌라시까지 교내 생동감을 더하며, 아무말 대잔치 닉네임을 사용함.",
-      code: `\`\`\`🌼\n[🗣️소문｜딸기맛마석｜제목: 야, 오늘 중앙홀에서 황녀 엎어진 거 봄?]\n👀 142 💬 6\n내용: 진짜 개웃김 ㅋㅋㅋ 혼자 우아하게 걷다가 자기 드레스 밟고 철푸덕함. \n👍 45  👎 2\n↳ 삭제된계정｜❗삭제되었음❗ 👍 12 👎 1\n↳↳ 딸기맛마석｜헐 방금 대댓글 뭐였음? 왜 썰림?\n\`\`\``
-    },
-    {
-      name: "!사교",
-      purpose: "아카데미 밖, 플로르베나 제국 귀족 사교계의 딥하고 스케일 큰 동향 및 가십을 파악함.",
-      feature: "고정 닉네임과 유동닉이 혼재하며, 철학적 토론부터 입에 담기 힘든 자극적인 사교계 찌라시까지 섞여 있음.",
-      code: `\`\`\`💎\n[🗣️가십｜ㅇㅇ(112.45)｜제목: 남부 로잔트 가문 소후작 요즘 폼 미친듯]\n👀 890 💬 15\n내용: 저번 가면무도회에서 핑크머리 봤는데 눈빛이 넹글 돌았던데? 무슨 일 있음?\n👍 120  👎 5\n↳ 추상화만사모음｜걔 원래 성깔 더럽기로 유명하잖아. 👍 45 👎 2\n↳↳ ㅇㅇ(45.12)｜ㄴㄴ 며칠 전부터 흑마법 손댄다는 찌라시 돌고 있음. 조심해라.\n\`\`\``
-    }
-  ];
+const SectionCommands = () => {
+  const { lang } = useLanguage();
+  const c = commandTranslations[lang];
+  const [openIdx, setOpenIdx] = useState<number | null>(0);
 
   return (
     <section id="commands" className="min-h-screen py-20 px-4 relative z-10 w-full max-w-4xl mx-auto">
       <h2 className="text-3xl font-serif text-rose-900 mb-10 text-center border-b border-rose-200 pb-4">
-        명령어 시스템
+        {c.sectionTitle}
       </h2>
       
       <div className="space-y-4">
-        {commands.map((cmd, idx) => (
+        {c.list.map((cmd, idx) => (
           <div key={idx} className="bg-white/90 backdrop-blur-sm rounded-xl shadow-sm border border-rose-100 overflow-hidden">
             <button 
               onClick={() => setOpenIdx(openIdx === idx ? null : idx)}
@@ -961,8 +1032,8 @@ const SectionCommands = () => {
             {openIdx === idx && (
               <div className="px-6 pb-6 pt-2 border-t border-rose-50">
                 <div className="space-y-3 text-gray-700 text-sm mb-6">
-                  <p>* <span className="font-bold text-rose-700">목적:</span> {cmd.purpose}</p>
-                  <p>* <span className="font-bold text-rose-700">특징:</span> {cmd.feature}</p>
+                  <p>* <span className="font-bold text-rose-700">{c.purposeLabel}</span> {cmd.purpose}</p>
+                  <p>* <span className="font-bold text-rose-700">{c.featureLabel}</span> {cmd.feature}</p>
                 </div>
                 
                 <div className="bg-gray-900 rounded-lg p-4 font-mono text-sm text-gray-300 overflow-x-auto">
@@ -982,6 +1053,22 @@ const SectionCommands = () => {
   );
 };
 
+const Footer = () => {
+  const { lang } = useLanguage();
+  const notices = {
+    ko: "* 본 페이지는 루민플로르 아카데미 RP 봇 홍보를 위해 제작되었음.",
+    en: "* This page was created to promote the Luminflor Academy RP Bot.",
+    ja: "* 当ページはルミンフロール・アカデミーRPボットのプロモーションのために制作されました。"
+  };
+
+  return (
+    <footer className="bg-rose-900 text-rose-100 py-8 text-center text-sm relative z-10">
+      <p>{notices[lang]}</p>
+      <p className="mt-2 opacity-70">© 2026 Luminflor Academy. All rights reserved.</p>
+    </footer>
+  );
+};
+
 export default function App() {
   const [lang, setLang] = useState<Language>('ko');
 
@@ -996,10 +1083,7 @@ export default function App() {
           <SectionCharacters />
           <SectionCommands />
         </main>
-        <footer className="bg-rose-900 text-rose-100 py-8 text-center text-sm relative z-10">
-          <p>* 본 페이지는 루민플로르 아카데미 RP 봇 홍보를 위해 제작되었음.</p>
-          <p className="mt-2 opacity-70">© 2026 Luminflor Academy. All rights reserved.</p>
-        </footer>
+        <Footer />
       </div>
     </LanguageContext.Provider>
   );
